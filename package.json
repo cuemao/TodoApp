@@ -2,7 +2,7 @@
   "name": "hw1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cuemao.github.io/Web",
+  "homepage": "https://cuemao.github.io/TodoApp/",
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
@@ -13,6 +13,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.9.5"
   },
   "scripts": {
