@@ -2,23 +2,80 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  padding: 30px;
 }
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+li {
+  list-style: none;
+}
+
+.CheckBox {
+  float: left;
+  margin-left:5px;
+}
+
+.EditnRemove {
+  float: right;
+  margin-left:5px;
+}
+
+.EditnRemove:hover, .CheckBox:hover {
+  filter: invert(1);
+}
+
+.TodoItem {
+  display: block;
+  width: 280px;
+  height: 30px;
+}
+
+.TodoItem:hover {
+  background-color: #BEBEBE;
+  cursor: default;
+}
+
+.ItemName {
+  display: block;
+  float: left;
+  width: 200px;
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 5px;
+}
+
+.TodoList {
+  display: block;
+  overflow: scroll;
+  width: 300px;
+  height: 300px;
+  background-color: #D2E9FF;
+  float: left;
+  margin-right:10px;
+  margin-bottom:10px;
+}
+
+.ListTitle {
+  font-size:24px;
+  display: block;
+  width: 280px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+.ListName {
+  display: block;
+  float: left;
+  width: 190px;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 5px;
 }
