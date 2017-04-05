@@ -9,18 +9,15 @@ import checkIco from './check.png';
 
 class CountDisplay extends Component {
   render() {
-    
     return (
       <div>
         {(this.props.display=="ALL" || this.props.display=="DONE")?
-          <span className="Count"> Done: {this.props.numDone} </span>:null}
+          <span className="Count"> Done &#58; {this.props.numDone}</span>:null}
         {(this.props.display=="ALL" || this.props.display=="UNDONE")?
-          <span className="Count"> Left: {this.props.numLeft} </span>:null}
+          <span className="Count"> Left &#58; {this.props.numLeft}</span>:null}
       </div>
     );
   }
-  
-
 }
 
 class TodoItem extends Component {
@@ -65,14 +62,15 @@ class TodoItem extends Component {
 
     var itemTitle = this.state.edit?  
       <span className="ItemName">
-        <input type="text" defaultValue={this.props.itemName}
+        <input type="text" className="edit" defaultValue={this.props.itemName}
           onKeyPress={this.editItem}/>
       </span> : done?
-      <span title={this.props.itemName} className="ItemName" 
-        style={{textDecoration: "line-through"}}>
+      <span title={this.props.itemName} className="ItemName Done"
+        onClick={this.checkItem}>
         {this.props.itemName}
       </span> : 
-      <span title={this.props.itemName} className="ItemName" >
+      <span title={this.props.itemName} className="ItemName" 
+        onClick={this.checkItem}>
         {this.props.itemName}
       </span>;
     
@@ -80,9 +78,9 @@ class TodoItem extends Component {
       <div className="TodoItem">
         {checkBox}
         {itemTitle}
-        <img alt="Remove" className="EditnRemove"
+        <img alt="Remove" className="EditnRemove Trans-down"
           src={removeIco_16} onClick={this.removeItem}></img>
-        <img alt="Edit"className="EditnRemove"
+        <img alt="Edit"className="EditnRemove Trans-down"
           src={editIco_16} onClick={this.clickEdit}></img>
       </div>
     );
@@ -164,10 +162,9 @@ class TodoList extends Component {
                 onCheckItem={this.checkItem}
                 onEditItem={this.editItem}/> :null );
 
-
     var listTitle = this.state.edit?
       <span className="ListName">
-        <input type="text" defaultValue={this.props.listName}
+        <input type="text" className="edit" defaultValue={this.props.listName}
           onKeyPress={this.editList}/>
       </span> :
       <span className="ListName" title={this.props.listName}>
@@ -175,22 +172,26 @@ class TodoList extends Component {
       </span>
 
     return (
-      <span className="TodoList">
+      <span className="ListBackground">
         <div className="ListTitle">
           {listTitle}
-          <img alt="Remove" className="BigEditnRemove" 
+          <img alt="Remove" className="EditnRemove" 
             src={removeIco_24} onClick={this.removeList}></img>
-          <img alt="Edit"className="BigEditnRemove"
+          <img alt="Edit"className="EditnRemove"
             src={editIco_24} onClick={this.clickEdit}></img>
         </div>
         <div style={{marginLeft:'5px',marginBottom:'5px'}}> 
+          {(this.props.display!="DONE")?
+            <input type="text" placeholder="Add New Item"
+              onKeyPress={this.newItem}/>:null}
+        </div>
+        <span className="TodoList ScrollBar">
+          {ITEMs}
+        </span>
+        <div className="ListCount">
           <CountDisplay display={this.props.display} 
             numDone={this.props.numDone} numLeft={this.props.numLeft}/>
-            {(this.props.display!="DONE")?
-              <input type="text" placeholder="Add new item"
-                onKeyPress={this.newItem}/>:null}
         </div>
-        {ITEMs}
       </span>
     );
   }
@@ -310,8 +311,8 @@ class TodoApp extends Component {
     );
     
     return (
-      <div>
-        <div className="App">
+      <div className="App">
+        <div className="App-header">
           <h1>TODO APP</h1>
           <div className="DisplayDiv">
             <span className={(this.state.display=="ALL")?
@@ -324,12 +325,12 @@ class TodoApp extends Component {
               "DisplayButton DisplayButtonClicked":"DisplayButton"}
               onClick={this.changeDisplay}>UNDONE</span>
           </div>
-          <input type="text" placeholder="Add new list"
+          <input type="text" className="header" placeholder="Add New List"
             onKeyPress={this.newList}/>
           <CountDisplay display={this.state.display}
             numDone={this.state.numDone} numLeft={this.state.numLeft}/>
         </div>
-        <div className="App-header">
+        <div className="App-list">
           {LISTs}
         </div>
       </div>

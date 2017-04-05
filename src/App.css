@@ -1,95 +1,33 @@
+html{
+  background-image: url(./background.jpg);
+}
+
+h1 {
+  margin: 10px 10px 10px 10px;
+}
+
 .App {
-  text-align: center;
-  background-color: black;
-  color: white;
+  font-family: Arial, Microsoft JhengHei;
 }
 
 .App-header {
-  padding: 30px;
+  text-align: center;
+  color: black;
+  padding:10px;
+  background-image: url(./header.png);
+  background-repeat: no-repeat;
+  background-size: 60% 100%;
+  background-position: center;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-.CheckBox {
-  float: left;
-  margin-left:5px;
-  margin-top:5px;
-}
-
-.EditnRemove {
-  float: right;
-  margin-left:5px;
-  margin-top:5px;
-}
-
-.BigEditnRemove {
-  float: right;
-  margin-left:5px;
-}
-
-.EditnRemove:hover, .BigEditnRemove:hover, .CheckBox:hover {
-  filter: invert(1);
-}
-
-.TodoItem {
-  display: block;
-  width: 100%;
-  height: 30px;
-}
-
-.TodoItem:hover {
-  background-color: #BEBEBE;
-  cursor: default;
-}
-
-.ItemName {
-  display: block;
-  float: left;
-  width: 200px;
-  height: 30px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-left: 5px;
-  line-height: 30px;
-}
-
-.TodoList {
-  display: block;
-  overflow: scroll;
-  width: 300px;
-  height: 300px;
-  background-color: #D2E9FF;
-  float: left;
-  margin-right:10px;
-  margin-bottom:10px;
-}
-
-.ListTitle {
-  font-size:24px;
-  display: block;
-  width: 280px;
-  height: 40px;
-  margin-top: 5px;
-}
-
-.ListName {
-  display: block;
-  float: left;
-  width: 190px;
-  height: 40px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-left: 5px;
+.App-list {
+  padding: 10px;
 }
 
 .DisplayDiv {
   display: block;
   width:100%;
-  height: 40px;
+  height: 30px;
   margin-bottom: 10px;
 }
 
@@ -110,17 +48,17 @@
   border-radius:22px;
   border:1px solid #d6bcd6;
   display:inline-block;
-  width:200px;
+  width:10%;
   height:100%;
   cursor:default;
-  color:#3a8a9e;
-  font-family:Arial;
-  font-size:24px;
-  line-height: 40px;
+  color: gray;
+  font-size:20px;
+  line-height: 30px;
   text-decoration:none;
   text-shadow:0px 1px 30px #e1e2ed;
   margin-left:5px;
   margin-right:5px;
+  overflow: hidden;
 }
 
 .DisplayButtonClicked, .DisplayButton:hover {
@@ -140,6 +78,149 @@
 }
 
 .Count {
-  display: inline-block;
-  margin-right:5px;
+  display:inline-box;
+  margin-top:30px;
+  margin-right:10px;
+  font-size:large;
+  color: gray;
+}
+
+.ListBackground {
+  width: 300px;
+  height: 350px;
+  background-image: url(./note.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 30px 10px 30px 10px;
+  position: relative;
+}
+
+.ListCount {
+  position: absolute;
+  left:20px;
+  bottom: 20px;
+}
+
+.TodoList {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: 205px;
+}
+
+.ListTitle {
+  font-size:24px;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-top: 15px;
+}
+
+.ListName {
+  display: block;
+  float: left;
+  width: 60%;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 40px;
+  line-height: 40px;
+}
+
+.TodoItem {
+  display: block;
+  width: 95%;
+  height: 30px;
+  margin-left:5px;
+}
+
+.TodoItem:hover {
+  background: rgba(0,0,0,0.2);
+  cursor: default;
+}
+
+.ItemName {
+  display: block;
+  float: left;
+  width: 70%;
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 5px;
+  line-height: 30px;
+}
+
+.Done {
+  text-decoration: line-through;
+  color: gray;
+  font-style: oblique;
+}
+
+.CheckBox {
+  float: left;
+  margin-left:5px;
+  margin-top:5px;
+}
+
+.EditnRemove {
+  float: right;
+  margin-left:5px;
+  margin-top:5px;
+}
+
+.Trans-down {
+  margin-top:5px;
+}
+
+.EditnRemove:hover, .BigEditnRemove:hover, .CheckBox:hover {
+  filter: invert(1);
+}
+
+.ScrollBar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  /*background-color: #F5F5F5;*/
+}
+
+.ScrollBar::-webkit-scrollbar {
+  width: 6px;
+  /*background-color: #F5F5F5;*/
+}
+
+.ScrollBar::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border: 2px solid #555555;
+}
+
+input {
+  padding: 5px;
+  border: none;
+  width: 96%;
+  height: 24px;
+  background: rgba(0,0,0,0.1);
+  outline: medium;
+  text-align: center;
+  font-size: large;
+  font-family: Arial, Microsoft JhengHei;
+}
+
+input:focus {
+}
+
+.edit {
+  font-style: oblique;
+}
+
+.header {
+  width: 40%;
+  height:30px;
+  font-size: 24px;
+  border-bottom-style: solid thick;
+  border-bottom-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
