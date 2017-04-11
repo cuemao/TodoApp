@@ -197,6 +197,7 @@ h1 {
 }
 
 input {
+  box-sizing: border-box;
   padding: 5px;
   border: none;
   width: 96%;
@@ -209,6 +210,7 @@ input {
 }
 
 input:focus {
+  border-bottom: 2px solid gray;
 }
 
 .edit {
