@@ -24,7 +24,7 @@ class TodoItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tmpName: "",
+      tmpName: this.props.itemName,
       edit: false
     };
     this.removeItem = this.removeItem.bind(this);
@@ -101,7 +101,7 @@ class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tmpName: "",
+      tmpName: this.props.listName,
       edit: false
     };
     this.newItem = this.newItem.bind(this);
