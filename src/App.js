@@ -289,7 +289,6 @@ class TodoApp extends Component {
   }
 
   changeDisplay(e) {
-    console.log(e.target.innerText);
     this.setState({ display: e.target.innerText });
   }
 
