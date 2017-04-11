@@ -24,6 +24,7 @@ class TodoItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      tmpName: "",
       edit: false
     };
     this.removeItem = this.removeItem.bind(this);
@@ -41,14 +42,23 @@ class TodoItem extends Component {
   }
 
   clickEdit() {
-    this.setState({ edit: true });
+    var edit = this.state.edit;
+    if(edit) {
+      this.props.onEditItem(this.props.idx, this.state.tmpName);
+      this.setState({edit: false});
+    } else {
+      this.setState({ edit: !this.state.edit });
+    }
   }
 
   editItem(e) {
     if (e.key === 'Enter') {
       this.props.onEditItem(this.props.idx, e.target.value);
       this.setState({edit: false});
-    } 
+    }
+    else {
+      this.setState({tmpName: e.target.value});
+    }
   }
   
   render() {
@@ -63,7 +73,7 @@ class TodoItem extends Component {
     var itemTitle = this.state.edit?  
       <span className="ItemName">
         <input type="text" className="edit" defaultValue={this.props.itemName}
-          onKeyPress={this.editItem}/>
+          onKeyPress={this.editItem} onChange={this.editItem}/>
       </span> : done?
       <span title={this.props.itemName} className="ItemName Done"
         onClick={this.checkItem}>
@@ -91,6 +101,7 @@ class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      tmpName: "",
       edit: false
     };
     this.newItem = this.newItem.bind(this);
@@ -122,14 +133,23 @@ class TodoList extends Component {
   }
 
   clickEdit() {
-    this.setState({edit: true});
+    var edit = this.state.edit;
+    if(edit) {
+      this.props.onEditList(this.props.idx, this.state.tmpName);
+      this.setState({edit: false});
+    } else {
+      this.setState({ edit: !this.state.edit });
+    }
   }
 
   editList(e) {
     if (e.key === 'Enter') {
       this.props.onEditList(this.props.idx, e.target.value);
       this.setState({edit: false});
-    } 
+    }
+    else {
+      this.setState({tmpName: e.target.value});
+    }
   }
 
   editItem(itemIdx, itemName) {
@@ -165,7 +185,7 @@ class TodoList extends Component {
     var listTitle = this.state.edit?
       <span className="ListName">
         <input type="text" className="edit" defaultValue={this.props.listName}
-          onKeyPress={this.editList}/>
+          onKeyPress={this.editList} onChange={this.editList}/>
       </span> :
       <span className="ListName" title={this.props.listName}>
         {this.props.listName}
