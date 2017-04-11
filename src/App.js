@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import removeIco_24 from './remove_24.png';
-import removeIco_16 from './remove_16.png';
-import editIco_24 from './edit_24.png';
-import editIco_16 from './edit_16.png';
-import checkboxIco from './checkbox.png';
-import checkIco from './check.png';
+import removeIco_24 from './pic/remove_24.png';
+import removeIco_16 from './pic/remove_16.png';
+import editIco_24 from './pic/edit_24.png';
+import editIco_16 from './pic/edit_16.png';
+import checkboxIco from './pic/checkbox.png';
+import checkIco from './pic/check.png';
 
 class CountDisplay extends Component {
   render() {

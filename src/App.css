@@ -1,5 +1,5 @@
 html{
-  background-image: url(./background.jpg);
+  background-image: url(./pic/background.jpg);
 }
 
 h1 {
@@ -14,7 +14,7 @@ h1 {
   text-align: center;
   color: black;
   padding:10px;
-  background-image: url(./header.png);
+  background-image: url(./pic/header.png);
   background-repeat: no-repeat;
   background-size: 60% 100%;
   background-position: center;
@@ -88,7 +88,7 @@ h1 {
 .ListBackground {
   width: 300px;
   height: 350px;
-  background-image: url(./note.png);
+  background-image: url(./pic/note.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   float: left;
