@@ -284,7 +284,7 @@ class TodoApp extends Component {
 
   editItem(listIdx, itemIdx, itemName) {
     var lists = this.state.todoLists;
-    lists[listIdx].items[itemIdx].name = itemName;
+    lists[listIdx].items[itemIdx].name = itemName;  
     this.setState({ todoLists: lists });
   }
 
