@@ -24,7 +24,8 @@ class TodoApp extends Component {
 
   newItem(listIdx, itemName) {
     const lists = this.state.todoLists;
-    lists[listIdx].items.push({ name: itemName, done: false });
+    lists[listIdx].items.push({ idx: lists[listIdx].items.length,
+      name: itemName, done: false });
     ++lists[listIdx].numLeft;
     this.setState({ numLeft: ++this.state.numLeft, todoLists: lists });
   }
@@ -40,14 +41,15 @@ class TodoApp extends Component {
       --lists[listIdx].numLeft;
       --Left;
     }
-    lists[listIdx].items.splice(itemIdx, 1);
+    delete lists[listIdx].items[itemIdx];
     this.setState({ numDone: Done, numLeft: Left, todoLists: lists });
   }
 
   newList(e) {
     if (e.key === 'Enter') {
       const lists = this.state.todoLists;
-      lists.push({ name: e.target.value, numDone: 0, numLeft: 0, items: [] });
+      lists.push({ idx: lists.length, name: e.target.value,
+        numDone: 0, numLeft: 0, items: [] });
       this.setState({ todoLists: lists });
       e.target.value = '';
     }
@@ -59,7 +61,7 @@ class TodoApp extends Component {
     let Left = this.state.numLeft;
     Done -= lists[listIdx].numDone;
     Left -= lists[listIdx].numLeft;
-    lists.splice(listIdx, 1);
+    delete lists[listIdx];
     this.setState({ numDone: Done, numLeft: Left, todoLists: lists });
   }
 
@@ -100,21 +102,23 @@ class TodoApp extends Component {
 
   render() {
     const display = this.state.display;
-    const LISTs = this.state.todoLists.map((list, i) =>
-      <TodoList
-        key={i} idx={i}
-        numDone={list.numDone}
-        numLeft={list.numLeft}
-        listName={list.name}
-        items={list.items}
-        onNewItem={this.newItem}
-        onRemoveItem={this.removeItem}
-        onRemoveList={this.removeList}
-        onCheckItem={this.checkItem}
-        onEditList={this.editList}
-        onEditItem={this.editItem}
-        display={display}
-      />,
+    const LISTs = this.state.todoLists.filter((list) =>
+      list !== undefined).map((list) =>
+        <TodoList
+          key={list.idx}
+          idx={list.idx}
+          numDone={list.numDone}
+          numLeft={list.numLeft}
+          listName={list.name}
+          items={list.items}
+          onNewItem={this.newItem}
+          onRemoveItem={this.removeItem}
+          onRemoveList={this.removeList}
+          onCheckItem={this.checkItem}
+          onEditList={this.editList}
+          onEditItem={this.editItem}
+          display={display}
+        />,
     );
 
     return (

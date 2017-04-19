@@ -16,5 +16,7 @@ module.exports = {
     'no-plusplus': 0,
     'no-nested-ternary': 0,
     'no-confusing-arrow': 0,
+    'object-property-newline': 0,
+    'arrow-parens': 0,
 	}
 };

@@ -67,33 +67,39 @@ class TodoList extends Component {
     const display = this.props.display;
 
     const ITEMs = (display === 'ALL') ?
-      this.props.items.map((item, i) =>
-        <TodoItem
-          key={i} idx={i}
-          itemName={item.name}
-          itemDone={item.done}
-          onRemoveItem={this.removeItem}
-          onCheckItem={this.checkItem}
-          onEditItem={this.editItem}
-        />) : (display === 'DONE') ?
-            this.props.items.map((item, i) => item.done ?
-              <TodoItem
-                key={i} idx={i}
-                itemName={item.name}
-                itemDone={item.done}
-                onRemoveItem={this.removeItem}
-                onCheckItem={this.checkItem}
-                onEditItem={this.editItem}
-              /> : null) :
-                this.props.items.map((item, i) => !item.done ?
-                  <TodoItem
-                    key={i} idx={i}
-                    itemName={item.name}
-                    itemDone={item.done}
-                    onRemoveItem={this.removeItem}
-                    onCheckItem={this.checkItem}
-                    onEditItem={this.editItem}
-                  /> : null);
+      this.props.items.filter((item) =>
+        item !== undefined).map((item) =>
+          <TodoItem
+            key={item.idx}
+            idx={item.idx}
+            itemName={item.name}
+            itemDone={item.done}
+            onRemoveItem={this.removeItem}
+            onCheckItem={this.checkItem}
+            onEditItem={this.editItem}
+          />) : (display === 'DONE') ?
+            this.props.items.filter((item) =>
+              item !== undefined).map((item) => item.done ?
+                <TodoItem
+                  key={item.idx}
+                  idx={item.idx}
+                  itemName={item.name}
+                  itemDone={item.done}
+                  onRemoveItem={this.removeItem}
+                  onCheckItem={this.checkItem}
+                  onEditItem={this.editItem}
+                /> : null) :
+                this.props.items.filter((item) =>
+                  item !== undefined).map((item) => !item.done ?
+                    <TodoItem
+                      key={item.idx}
+                      idx={item.idx}
+                      itemName={item.name}
+                      itemDone={item.done}
+                      onRemoveItem={this.removeItem}
+                      onCheckItem={this.checkItem}
+                      onEditItem={this.editItem}
+                    /> : null);
 
     const listTitle = this.state.edit ?
       <span className="ListName">
